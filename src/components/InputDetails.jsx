@@ -13,12 +13,9 @@ const InputDetails = () => {
     e.preventDefault();
     Input(name,message).then((data)=>{
         if(data){
-            console.log(data)
             Navigate(`copy/${data.$id}`)
         }
     })
-    console.log('Name:', name);
-    console.log('Message:', message);
     setName('');
     setMessage('');
   };

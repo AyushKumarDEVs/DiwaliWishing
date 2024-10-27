@@ -15,10 +15,8 @@ const Wish = () => {
   const {id}=useParams();
 
   useEffect(() => {
-    console.log(id)
     GetDocument(id).then((data)=>{
         if(data){
-            console.log(data)
             setName(data.Name)
             setMessage(data.Message)
         }
@@ -53,8 +51,8 @@ const Wish = () => {
           <h1 className="text-white text-xl md:text-6xl font-bold mb-4">
             {Name} is wishing you a very happy Diwali
           </h1>
-          <p className="bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300 bg-clip-text text-transparent text-xl md:text-4xl font-semibold">
-            {Message}
+          <p className="bg-gradient-to-r font-bold from-pink-300 via-purple-300 to-blue-300 bg-clip-text text-transparent text-xl md:text-4xl ">
+            " {Message} "
           </p>
           {/* Play/Pause Button */}
           {
