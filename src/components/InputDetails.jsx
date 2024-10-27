@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { GetDocument,Input } from '../App';
+
 
 const InputDetails = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
+    const Navigate=useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    Input(name,message).then((data)=>{
+        if(data){
+            console.log(data)
+            Navigate(`copy/${data.$id}`)
+        }
+    })
     console.log('Name:', name);
     console.log('Message:', message);
     setName('');
@@ -47,7 +57,7 @@ const InputDetails = () => {
             />
           </div>
           <div className="flex items-center justify-center">
-            <Link to={"/Copy"}>
+            
             <button
               type="submit"
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300"
@@ -55,7 +65,6 @@ const InputDetails = () => {
               Make
             </button>
 
-            </Link>
             
           </div>
         </form>

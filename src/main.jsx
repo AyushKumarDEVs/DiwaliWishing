@@ -5,7 +5,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import App from './App.jsx'
 import InputDetails from './components/InputDetails.jsx';
 import Wish from './components/Wish.jsx';
 import CopyUrlComponent from './components/CopyUrlComponent.jsx';
@@ -17,12 +16,12 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/Copy",
+    path: "Copy/:id",
     element: <CopyUrlComponent/>,
   },
 
   {
-    path: "/wish",
+    path: "wish/:id",
     element: <Wish/>,
   },
 ]);

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const CopyUrlComponent = () => {
   const [copySuccess, setCopySuccess] = useState('');
-  const currentUrl = window.location.href; // Get the current URL
+  const {id}=useParams();
+  const currentUrl = `http://localhost:5174/wish/${id}`; // Get the current URL
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(currentUrl)
@@ -21,7 +23,7 @@ const CopyUrlComponent = () => {
       <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center text-white">
         Copy the URL and Send it to your Relatives
       </h1>
-      <p className="text-lg text-white mb-4">{currentUrl}</p> {/* Display the current URL */}
+      <p className="text-sm text-white mb-4">{`http://localhost:5174/wish/${id}`}</p> {/* Display the current URL */}
       <button
         onClick={copyToClipboard}
         className="px-6 py-2 text-white bg-blue-700 rounded hover:bg-blue-600 transition duration-300"

@@ -1,11 +1,30 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import videoSrc from '../assets/video.mp4';
+import { Link, useParams } from 'react-router-dom';
+import { GetDocument } from '../App';
+
+import heading from "../assets/heading.png";
+import bottom from "../assets/bottom.png";
+
 
 const Wish = () => {
   const [Name, setName] = useState("Name");
   const [Message, setMessage] = useState("Experience joy and creativity like never before.");
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
+  const {id}=useParams();
+
+  useEffect(() => {
+    console.log(id)
+    GetDocument(id).then((data)=>{
+        if(data){
+            console.log(data)
+            setName(data.Name)
+            setMessage(data.Message)
+        }
+    })
+  }, [])
+  
 
   const handlePlayPause = () => {
 
@@ -29,7 +48,7 @@ const Wish = () => {
         Your browser does not support the video tag.
       </video>
       <div className="absolute inset-0 flex flex-col items-center  bg-black bg-opacity-50">
-        <img className='h-30 w-full max-w-sm animate-pulse ' src="src\assets\heading.png" alt="" />
+        <img className='h-30 w-full max-w-sm animate-pulse ' src={heading} alt="jj" />
         <div className="text-center flex flex-col gap-10">
           <h1 className="text-white text-xl md:text-6xl font-bold mb-4">
             {Name} is wishing you a very happy Diwali
@@ -38,14 +57,32 @@ const Wish = () => {
             {Message}
           </p>
           {/* Play/Pause Button */}
-          <button
-            onClick={handlePlayPause}
-            className="bg-white text-black px-6 py-3 rounded-full text-xl font-bold hover:bg-gray-200 transition"
-          >
-            {isPlaying ? "Pause Video" : "Play Video"}
-          </button>
+          {
+!isPlaying&&<button
+onClick={handlePlayPause}
+className="bg-white text-black px-6 py-3 rounded-full text-xl font-bold hover:bg-gray-200 transition"
+>
+{isPlaying ? "Pause Video" : "Play Video"}
+</button>
+
+          }
+          
+          {
+            isPlaying&& <Link to={"/"}>
+          
+          
+            <button
+              
+              className="bg-white  text-black px-6 py-3 rounded-full text-xl font-bold hover:bg-gray-200 transition"
+            >
+              {"Make Your own"}
+            </button>
+  
+            </Link>
+          }
+         
         </div>
-        <img className='h-30 w-full max-w-sm animate-pulse ' src="src\assets\bottom.png" alt="" />
+        <img className='h-30 w-full max-w-sm animate-pulse ' src={bottom} alt="" />
 
       </div>
     </div>
