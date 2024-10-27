@@ -5,6 +5,7 @@ import { GetDocument } from '../App';
 
 import heading from "../assets/heading.png";
 import bottom from "../assets/bottom.png";
+import Loader from './Loader';
 
 
 const Wish = () => {
@@ -13,12 +14,13 @@ const Wish = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
   const {id}=useParams();
-
+    const [isLoading, setisLoading] = useState(true)
   useEffect(() => {
     GetDocument(id).then((data)=>{
         if(data){
             setName(data.Name)
             setMessage(data.Message)
+            setisLoading(false);
         }
     })
   }, [])
@@ -36,6 +38,11 @@ const Wish = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
+        {
+            isLoading &&(
+                <Loader/>
+            )
+        }
       <video
         ref={videoRef}
         className="absolute top-1/2 left-1/2 min-w-full min-h-full max-w-none transform -translate-x-1/2 -translate-y-1/2 object-cover"

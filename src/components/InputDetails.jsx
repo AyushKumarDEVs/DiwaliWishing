@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { GetDocument,Input } from '../App';
+import Loader from './Loader';
 
 
 const InputDetails = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
     const Navigate=useNavigate();
+    const [isLoading, setisLoading] = useState(false)
 
 
   const handleSubmit = (e) => {
+    setisLoading(true);
     e.preventDefault();
     Input(name,message).then((data)=>{
         if(data){
@@ -20,9 +23,17 @@ const InputDetails = () => {
     setMessage('');
   };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 p-4">
+  
+  return  (
+    <>
+     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 p-4">
+     {
+            isLoading&&(
+                <Loader/>
+            )
+        }
       <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full">
+        
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Input Your Details</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -67,7 +78,9 @@ const InputDetails = () => {
         </form>
       </div>
     </div>
-  );
+    </>
+  )
+
 };
 
 export default InputDetails;
