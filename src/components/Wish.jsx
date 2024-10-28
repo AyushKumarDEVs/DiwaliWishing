@@ -68,7 +68,7 @@ const Wish = () => {
             {Name}
           </h1>
           <h1 className="bg-gradient-to-r bg-clip-text text-2xl text-transparent font-bold   from-yellow-300 via-yellow-600 to-yellow-900 ">
-            is wishing you a very happy Diwali
+            Wishes you a very happy Diwali !!!
           </h1>
           <div className=" w-full bg-transparent mt-10 overflow-hidden ">
             <p className="bg-gradient-to-r bg-clip-text text-2xl text-transparent font-bold    from-yellow-100 via-yellow-200 to-yellow-400 ">
