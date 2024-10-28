@@ -1,6 +1,6 @@
 import React from 'react'
-import 'ldrs/reuleaux'
-
+import { reuleaux } from 'ldrs'
+reuleaux.register()
 function Loader() {
   return (
     <div className='absolute flex h-screen w-screen bg-gray-400 bg-opacity-40 justify-center items-center'>
