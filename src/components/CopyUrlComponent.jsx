@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 const CopyUrlComponent = () => {
   const [copySuccess, setCopySuccess] = useState('');
   const {id}=useParams();
-  const currentUrl = `${import.meta.env.VITE_DOMAIN_NAME}wish/${id}`; // Get the current URL
+  const currentUrl = `${import.meta.env.VITE_DOMAIN_NAME_LOCAL_HOST}wish/${id}`; // Get the current URL
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(currentUrl)
