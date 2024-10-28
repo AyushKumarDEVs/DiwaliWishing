@@ -8,7 +8,7 @@ const InputDetails = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
     const Navigate=useNavigate();
-    const [isLoading, setisLoading] = useState(false)
+    const [isLoading, setisLoading] = useState(true)
 
 
   const handleSubmit = (e) => {
